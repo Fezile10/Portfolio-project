@@ -1,0 +1,364 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light background color */
+}
+
+.container {
+    max-width: 1200px; /* Increased width for better layout */
+    margin: auto;
+	background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #442980;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    margin-bottom: 20px; /* Space below the flex container */
+}
+
+.project-management {
+    background-color: #fff; /* Green background for project management */
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1; /* Allow it to grow */
+    margin-right: 10px; /* Space between the two sections */
+}
+.view-projects {
+    background-color: #fff; /* Orange background for bids */
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1; /* Allow it to grow */
+}
+
+.view-bids {
+    background-color: #fff; /* Orange background for bids */
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1; /* Allow it to grow */
+}
+
+.analytics {
+    background-color: #fff; /* Purple */
+    padding: 20px;
+	height: 500px;
+    border-radius: 5px;
+    margin-top: 20px; /* Space above the analytics section */
+}
+
+h2 {
+    color: #442980; /* White text for section headers */
+    padding: 10px;
+    margin: 0;
+	text-align: center;
+	border: 2px solid #BD158D;
+	background-color: #F9F2F2;
+	margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+	background-color: #F9F2F2;
+}
+
+table, th, td {
+    border: 1px solid #442980;
+}
+
+th, td {
+    padding: 12px;
+    text-align : left;
+	border-bottom: 5px solid #ddd;
+}
+
+th {
+    background-color: #F9F2F2;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #A05AFF; /* Blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #7978E9; /* Darker blue */
+}
+
+input[type="text"], textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #442980;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #007BFF; /* Blue focus border */
+    outline: none;
+}
+
+canvas{
+	
+	margin-left: 25%;
+	margin-top: 30px;
+}
+p{
+	display: inline;
+	text-align: center;
+	margin-left: 200px;
+}
+
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: white; /* White text color */
+    text-align: center; /* Centered text */
+    padding: 15px 0; /* Padding for top and bottom */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    margin-top: 137px; /* Space above the footer */
+}
+
+footer a {
+    color: #4CAF50; /* Green links */
+    text-decoration: none; /* Remove underline */
+	margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.social-media {
+    margin-top: 10px; /* Space above social media icons */
+}
+
+.social-media a {
+    color: white; /* White color for icons */
+    margin: 0 10px; /* Space between icons */
+    font-size: 20px; /* Size of the icons */
+}
+
+.social-media a:hover {
+    color: #4CAF50; /* Change color on hover */
+}
+
+
+.help-icon {
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative; /* Position relative for tooltip positioning */
+}
+
+.help-icon i {
+    color: #007BFF; /* Blue color for the help icon */
+    font-weight: bold; /* Make the icon bold */
+}
+
+.help-icon:hover::after {
+    content: attr(data-tooltip); /* Use the data-tooltip attribute */
+    position: absolute;
+    bottom: 100%; /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50 %);
+    background-color: #333; /* Dark background for tooltip */
+    color: #fff; /* White text */
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 10; /* Ensure tooltip is above other elements */
+    opacity: 0.8; /* Slightly transparent */
+    font-size: 12px; /* Font size for tooltip */
+}
+#bidsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#bidsTable th, #bidsTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#bidsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+#bidsTable tbody tr:hover {
+    background-color: #e0f7fa; /* Light blue on hover */
+}
+
+#searchBids {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border around the table */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+#bidsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#bidsTable th, #bidsTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#bidsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+#bidsTable tbody tr:hover {
+    background-color: #e0f7fa; /* Light blue on hover */
+}
+header {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for the header */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between logo and title */
+}
+
+.header-container {
+    display: flex; /* Use flexbox for header content */
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    height: 65px; /* Set logo height */
+    margin: 10px 20px;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+}
+
+h1 {
+    font-size: 24px; /* Title font size */
+    margin: 0; /* Remove default margin */
+}
+
+#navbar{
+	margin-left: 409px;
+	
+}
+#completeProjects {
+    background-color: #A05AFF; /* Red background for logout button */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+	margin-top: 20px;
+}
+
+#logoutButton {
+    background-color: #A05AFF; /* Red background for logout button */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+	margin-top: 20px;
+}
+
+#logoutButton:hover {
+    background-color: #7978E9; /* Darker red on hover */
+}
+.search-container {
+    position: relative; /* Position relative for absolute positioning of the button */
+    margin-bottom: 20px; /* Space below the search container */
+}
+
+#searchBids {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for input */
+    border: 1px solid #ccc; /* Border for input */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+#searchButton {
+    position: absolute; /* Position absolute to place inside the input */
+    right: 0px; /* Position from the right */
+    top: 42%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    padding: 11px 15px; /* Padding for button */
+    background-color: #A05AFF; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 0px 5px 5px 0px; /* Rounded corners */
+}
+
+#projectsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#projectsTable th, #projectsTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#projectsTable th {
+	position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 10; 
+    background-color: #f4f4f4;
+}
+
+#projectsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+#projectsTable tbody tr:hover {
+    background-color: #e0f7fa; /* Light blue on hover */
+}
+
+#searchButton:hover {
+    background-color: #7978E9; /* Darker blue on hover */
+}
+select {
+    width: calc(100% - 22px); /* Full width minus padding */
+    padding: 10px; /* Padding for select */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Border for select */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+}
+
+select:focus {
+    border-color: #007BFF; /* Blue focus border */
+    outline: none; /* Remove outline */
+}
+.rights{
+	text-align: center;
+	margin-left: 0px;
+}

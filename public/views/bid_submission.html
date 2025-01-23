@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ```html
+    ="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/contractor.css">
+    <title>Submit Bid</title>
+</head>
+<body>
+    <div class="contractor-container">
+        <h1>Submit a Bid</h1>
+        <form action="/bids/submit" method="POST">
+            <input type="text" name="projectName" placeholder="Project Name" required>
+            <input type="number" name="bidAmount" placeholder="Bid Amount" required>
+            <button type="submit">Submit Bid</button>
+        </form>
+        <a href="/contractor_dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>

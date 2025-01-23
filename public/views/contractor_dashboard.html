@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanBidder</title>
+    <link rel="stylesheet" href="/css/contractor.css">
+    <style>
+        /* Basic styles for the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <img src="/images/logo1.jpg" alt="Logo" class="logo"> <!-- Placeholder for logo -->
+            <h1>Contractor Dashboard</h1>
+            <div id="navbar">          
+                <button id="completeProjects" href="/views/gallery.html">Gallery</button>
+                <button id="contacts" href="/views/contacts.html">Contacts</button>
+				<button id="about" href="/views/about.html">About Us</button>
+                <button id="policy" href="/views/legal.html">Legal and Policy</button>
+                <button id="logoutButton" href="/views/index.html">Logout</button>
+            </div>
+        </div>
+        
+        <div class="flex-container">
+            <div class="sidebar">
+                <h1>Bidding form</h1>
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" placeholder="Enter project name" required>
+                </div>
+                <div class="form-group">
+                    <label for="bid-amount">Bid Amount:</label>
+                    <input type="text" id="bid-amount" placeholder="R0.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="fileInput">Attach Document:</label>
+                    <input type="file" id="fileInput" multiple>
+                </div>
+                <button class="btn" id="submit-bid-button">Submit Bid</button>
+            </div>
+            <div class="main">
+                <div class="analytics-overview">
+                    <div id="bids-table">
+                        <h1>Bids Table</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Contractor Name</th>
+                                    <th>Bid Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bids-tbody">
+                                <!-- Bids will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p class="rights">&copy; 2025 Fezile Mknikazi. All rights reserved.</p>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Bid Details -->
+    <div id="bidDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h3>Bid Details</h3>
+            <div id="modal-body">
+                <!-- Bid details will be populated here -->
+            </div>
+        </div>
+    </div>
+	<script src="/js/contractor.js"></script>
+    <script>
+        const bids = []; // Array to store bids
+
+        document.getElementById('submit-bid-button').addEventListener('click', function() {
+            const projectName = document.getElementById('project-name').value;
+            const bidAmount = parseFloat(document.getElementById('bid-amount').value.replace(/R|,/g, '').trim());
+            const fileInput = document.getElementById('fileInput');
+            const files = fileInput.files;
+
+            // Check if inputs are empty
+            if (!projectName || isNaN(bidAmount)) {
+                alert('Please fill in both fields with valid data.');
+                return; // Stop execution if inputs are invalid
+            }
+
+            const bidsTbody = document.getElementById('bids-tbody');
+            const newRow = bidsTbody.insertRow();
+            const bidId = bids.length; // Simple ID based on array length
+
+            // Create a file URL for the uploaded document
+            let documentUrl = '';
+            if (files.length > 0) {
+                const file = files[0]; // Get the first file
+                documentUrl = URL.createObjectURL(file); // Create a URL for the file
+            }
+
+            // Store bid details in the array
+            bids.push({
+                id: bidId,
+                projectName: projectName,
+                contractorName: 'Your Name', // Replace with actual name
+                bidAmount: bidAmount,
+                status: 'Pending',
+                documentUrl: documentUrl // Store the document URL
+            });
+
+            newRow.insertCell(0).textContent = projectName; // Project Name
+            newRow.insertCell(1).textContent = 'Your Name'; // Contractor Name
+            newRow.insertCell(2).textContent = formatCurrency(bidAmount); // Bid Amount formatted
+            newRow.insertCell(3).textContent = 'Pending'; // Status
+
+            // Actions cell with buttons
+            const actionsCell = newRow.insertCell(4);
+            actionsCell.innerHTML = `
+                <button onclick="viewBidDetails(${bidId})">View Bid Details</button>
+                <button onclick="withdrawBid(${bidId})">Withdraw Bid</button>
+            `;
+
+            // Clear input fields after successful submission
+            document.getElementById('project-name').value = '';
+            document.getElementById('bid-amount').value = '';
+            fileInput.value = ''; // Clear file input
+        });
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-ZA', {
+                style: 'currency',
+                currency: 'ZAR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function viewBidDetails(bidId) {
+            const bid = bids[bidId]; // Get the bid details using the ID
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <p><strong>Project Name:</strong> ${bid.projectName}</p>
+                <p><strong>Contractor Name:</strong> ${bid.contractorName}</p>
+                <p><strong>Bid Amount:</strong> ${formatCurrency(bid.bidAmount)}</p>
+                <p><strong>Status:</strong> ${bid.status}</p>
+                ${bid.documentUrl ? `<p><strong>Document:</strong> <a href="${bid.documentUrl}" target="_blank">View Document</a></p>` : ''}
+            `;
+            document.getElementById('bidDetailsModal').style.display = 'block'; // Show modal
+        }
+
+        // Close the modal when the user clicks on <span> (x)
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('bidDetailsModal').style.display = 'none';
+        }
+
+        // Close the modal when the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('bidDetailsModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function withdrawBid(bidId) {
+            if (confirm('Are you sure you want to withdraw this bid?')) {
+                const bidsTbody = document.getElementById('bids-tbody');
+                const row = bidsTbody.rows[bidId];
+                if (row) {
+                    row.cells[3].textContent = 'Withdrawn'; // Update status
+                    row.cells[4].innerHTML = ''; // Clear actions
+                }
+                alert('Bid withdrawn successfully.');
+            }
+        }
+
+	
+	
+// Handle logout button click
+    logoutButton.addEventListener('click', () => {
+        console.log('User  logged out');
+        window.location.href = '/views/index.html'; 
+    });
+	// Handle admin dashbaord button click
+    policy.addEventListener('click', () => {
+        console.log('Dashboard redirects');
+        window.location.href = '/views/legal.html'; 
+    });
+	// Handle contacts button click
+    contacts.addEventListener('click', () => {
+        console.log('Contacts redirects');
+        window.location.href = '/views/contacts.html'; 
+    });
+	// Handle gallery button click
+    completeProjects.addEventListener('click', () => {
+        console.log('Gallery redirect');
+        window.location.href = '/views/gallery.html'; 
+    });
+	// Handle gallery button click
+    about.addEventListener('click', () => {
+        console.log('About Us redirect');
+        window.location.href = '/views/about.html'; 
+    });
+    </script>
+</body>
+</html>

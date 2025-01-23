@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin.css">
+    <title>View Bids</title>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Submitted Bids</h1>
+        <table>
+            <tr>
+                <th>Bid ID</th>
+                <th>Contractor</th>
+                <th>Project Name</th>
+                <th>Bid Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% bids.forEach(bid => { %>
+            <tr>
+                <td><%= bid._id %></td>
+                <td><%= bid.userId.username %></td>
+                <td><%= bid.projectName %></td>
+                <td><%= bid.bidAmount %></td>
+                <td><%= bid.status %></td>
+                <td>
+                    <form action="/bids/update/<%= bid._id %>" method="POST">
+                        <select name="status">
+                            <option value="pending" <%= bid.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                            <option value="accepted" <%= bid.status === 'accepted' ? 'selected' : '' %>>Accepted</option>
+                            <option value="rejected" <%= bid.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+        <a href="/admin_dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>

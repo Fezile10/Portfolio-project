@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>CleanBidder</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="/images/logo1.jpg" alt="Logo" class="logo"> <!-- Logo path -->
+        </div>
+        <h1>Welcome to the CleanBidder Dashboard</h1>
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form-box" id="authForm">
+                <h2>Login</h2>
+                <div id="loginError" class="error-message" style="display: none;"></div> <!-- Error message for login -->
+                <form id="loginForm" action="/auth/login" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                    <p><a href="#" id="showRegister">Don't have an account? Register here</a></p>
+                </form>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="registerSection" class="form-box" style="display: none;">
+                <h2>Register</h2>
+                <div id="registerError" class="error-message" style="display: none;"></div> <!-- Error message for registration -->
+                <form id="registerForm" action="/auth/register" method="POST">
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <input type="text" name="username" id="regUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" name="password" id="regPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select name="role" id="role" required>
+                            <option value="contractor">Contractor</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit">Register</button>
+                    <p><a href="#" id="showLogin">Already have an account? Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle between login and registration forms
+        document.getElementById('showRegister').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('authForm').style.display = 'none'; // Hide login form
+            document.getElementById('registerSection').style.display = 'block'; // Show registration form
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('registerSection').style.display = 'none'; // Hide registration form
+            document.getElementById('authForm').style.display = 'block'; // Show login form
+        });
+
+        // Simulated user data storage
+        let users = [];
+
+        // Handle registration form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const role = document.getElementById('role').value;
+
+            // Simple registration logic
+            if (username.length < 3) {
+                document.getElementById('registerError').textContent = 'Username must be at least 3 characters long.';
+                document.getElementById('registerError').style.display = 'block'; // Show error message
+                return;
+            }
+
+            if (password.length < 6) {
+                document.getElementById('registerError').textContent = 'Password must be at least 6 characters long.';
+                document.getElementById('registerError').style.display = 'block'; // Show error message
+                return;
+            }
+
+            // Simulate successful registration
+            users.push({ username, password, role }); // Store user data
+            alert('Registration successful! You can now log in.'); // Handle successful registration
+            document.getElementById('registerSection').style.display = 'none'; // Hide registration form
+            document.getElementById('authForm').style.display = 'block'; // Show login form
+        });
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check for valid login
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                alert('Login successful! Redirecting to ' + user.role + ' dashboard...');
+                window.location.href = user.role === 'admin' ? '/views/admin_dashboard.html' : '/views/contractor_dashboard.html'; // Redirect based on role
+            } else {
+                document.getElementById('loginError').textContent = 'Invalid username or password.';
+                document.getElementById('loginError').style.display = 'block'; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>

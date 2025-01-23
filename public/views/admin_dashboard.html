@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanBidder</title>
+    <link rel="stylesheet" href="/css/admin.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+	<div class="header-container">
+            <img src="/images/logo1.jpg" alt="Logo" class="logo"> <!-- Placeholder for logo -->
+            <h1>Admin Dashboard</h1>
+			<div id="navbar">          
+			<button id="completeProjects"href="/views/gallery.html">Gallery</button>
+			<button id="contacts" href="/views/contacts.html">Contacts</button>
+			<button id="about"href="/views/about.html">About Us</button>
+			<button id="policy"href="/views/legal.html">Legal and Policy</button>
+            <button id="logoutButton" href="/views/index.html">Logout</button>
+		</div>
+        </div>
+		
+	<div class="flex-container">
+        <div class="project-management">
+			<div class="add-project">
+				<h2>Add New Project</h2>
+				<form id="projectForm">
+				<label for="projectName">Project Name:</label>
+				<span class="help-icon" data-tooltip="Enter the name of the project."><i>?</i></span>
+				<input type="text" id="projectName" name="projectName" required><br><br>
+				<label for="description">Description:</label>
+				<span class="help-icon" data-tooltip="Provide a brief description of the project."><i>?</i></span>
+				<textarea id="description" name="description" required></textarea><br><br>
+				<label for="location">Location:</label>
+				<span class="help-icon" data-tooltip="Specify the location of the project."><i>?</i></span>
+				<select id="location" name="location" required>
+					<option value="" disabled selected>Select a location</option>
+					<option value="Gauteng">Gauteng</option>
+					<option value="Limpopo">Limpopo</option>
+					<option value="Mpumalanga">Mpumalanga</option>
+					<option value="Northern Cape">Northern Cape</option>
+					<option value="Western Cape">Western Cape</option>
+					<option value="KwaZulu Natal">KwaZulu Natal</option>
+					<option value="Eastern Cape">Eastern Cape</option>
+					<option value="Free State">Free State</option>
+				</select><br><br>
+				<button type="submit">Add Project</button>
+			</form>
+			</div>
+		</div>
+			
+        <div class="view-bids">
+			<h2>View Bids</h2>
+			<div class="search-container">
+				<input type="text" id="searchBids" placeholder="Search bids...">
+				<button id="searchButton">Search</button>
+			</div>
+			<div class="table-container">
+			<table id="bidsTable">
+				<thead>
+					<tr>
+						<th>Contractor Name</th>
+						<th>Project Name</th>
+						<th>Bid Amount</th>
+						<th>Status</th>
+						<th>Actions</th >
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>John Doe</td>
+						<td>Project Alpha</td>
+						<td>R10,000</td>
+						<td>Pending</td>
+						<td>
+							<button class="editStatus" data-project="Project Alpha">
+								<i class="fab fa-edit" data-tooltip="Edit Bid"></i>
+							</button>
+							<button class="deleteBid" data-project="Project Alpha">
+								<i class="fab fa-trash" data-tooltip="Delete Bid"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+	<div class="view-projects">
+				<h2>View Projects</h2>
+			<div class="table-container">
+				<table id="projectsTable">
+					<thead>
+						<tr>
+							<th>Project Name</th>
+							<th>Description</th>
+							<th>Location</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Projects will be loaded here -->
+					</tbody>
+				</table>
+			</div>
+			</div>
+        <div class="analytics">
+			<h2>Analytics Overview</h2>
+			<p>Open Bids: <span id="openBidsCount">0</span></p>
+			<p>Pending Bids: <span id="pendingBidsCount">0</span></p>
+			<p>Closed Bids: <span id="closedBidsCount">0</span></p>
+			<canvas id="bidsChart" width="200" height="200"></canvas>
+		</div>
+	<footer>
+		<p class="rights" >&copy; 2025 Fezile Mnikazi. All rights reserved.</p>
+		<p style="margin-left: 0px;"> 
+		</p>
+		<div class="social-media">
+			<a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+				<i class="fas fa-phone"></i>
+			</a>
+			<a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+				<i class="fab fa-instagram"></i>
+			</a>
+			<a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+				<i class="fas fa-envelope"></i>
+			</a>
+		</div>
+	</footer>
+        
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

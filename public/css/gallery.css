@@ -1,0 +1,130 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light background color */
+}
+h1 {
+    font-size: 24px; /* Title font size */
+	color: #442980;
+	text-align: center;
+	margin: 0;
+}
+
+.rights{
+	text-align: center;
+	margin-left: 0px;
+}
+
+#navbar{
+	margin-left: 325px;	
+}
+
+button {
+    background-color: #A05AFF; /* Red background for logout button */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+	margin-top: 10px;
+}
+
+button:hover {
+    background-color: #7978E9; /* Darker red on hover */
+}
+.header-container {
+    display: flex; /* Use flexbox for header content */
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    height: 65px; /* Set logo height */
+    margin: 10px 85px;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	margin-left: 85px;
+	margin-right: 20px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.container {
+    max-width: 1200px; /* Increased width for better layout */
+    margin: auto;
+	background-color: #fff;
+}
+
+.gallery-container {
+	max-width: 1036px; /* Increased width for better layout */
+    margin: auto;
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 15px; /* Space between items */
+    padding: 20px; /* Padding /* Padding for the gallery */
+}
+
+.gallery-item {
+    background-color: white; /* White background for gallery items */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.gallery-item img {
+    width: 100%; /* Full width for images */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.gallery-info {
+    padding: 15px; /* Padding for text */
+    text-align: center; /* Centered text */
+}
+
+.gallery-info h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.2em; /* Font size for title */
+}
+
+.gallery-info p {
+    color: #666; /* Gray color for description */
+    font-size: 0.9em; /* Font size for description */
+}
+
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: white; /* White text color */
+    text-align: center; /* Centered text */
+    padding: 15px 0; /* Padding for top and bottom */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 1036px; /* Full width */
+}
+
+footer a {
+    color: #4CAF50; /* Green links */
+    text-decoration: none; /* Remove underline */
+	margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.social-media {
+    margin-top: 10px; /* Space above social media icons */
+}
+
+.social-media a {
+    color: white; /* White color for icons */
+    margin: 0 10px; /* Space between icons */
+    font-size: 20px; /* Size of the icons */
+}
+
+.social-media a:hover {
+    color: #4CAF50; /* Change color on hover */
+}

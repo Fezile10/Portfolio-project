@@ -1,0 +1,162 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light background color */
+}
+
+.header-container {
+    display: flex; /* Use flexbox for header content */
+    align-items: center; /* Center items vertically */
+}
+button {
+    padding: 10px 15px;
+    background-color: #A05AFF; /* Blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #7978E9; /* Darker blue */
+}
+.logo {
+    height: 65px; /* Set logo height */
+    margin: 10px 20px;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+}
+#navbar{
+	margin-left: 335px;
+	margin-top: 30px;
+	
+}
+.container {
+    max-width: 1200px; /* Increased width for better layout */
+    margin: auto;
+	background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #442980;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    margin-bottom: 20px; /* Space below the flex container */
+	margin-top: 40px;
+}
+.sidebar {
+    width: 300px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-left: 25px;
+}
+.main {
+    flex: 1;
+    margin-left: 20px;
+	margin-right: 50px;
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+	text-align: content;
+}
+.analytics-overview {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: white; /* White text color */
+    text-align: center; /* Centered text */
+    padding: 15px 0; /* Padding for top and bottom */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    margin-top: 137px; /* Space above the footer */
+}
+
+footer a {
+    color: #4CAF50; /* Green links */
+    text-decoration: none; /* Remove underline */
+	margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.social-media {
+    margin-top: 10px; /* Space above social media icons */
+}
+
+.social-media a {
+    color: white; /* White color for icons */
+    margin: 0 10px; /* Space between icons */
+    font-size: 20px; /* Size of the icons */
+}
+
+.social-media a:hover {
+    color: #4CAF50; /* Change color on hover */
+}
+.dashboard-container {
+    padding: 20px; /* Padding for the dashboard */
+}
+
+form {
+    margin-bottom: 20px; /* Space below the form */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin: 10px 0 5px; /* Margin for spacing */
+}
+
+select, input[type="number"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for inputs */
+    margin-bottom: 10px; /* Space below inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 5px; /* Rounded corners */
+}
+table {
+    width: 100%; /* Full width for table */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+th, td {
+    padding: 12px; /* Padding for table cells */
+    text-align: left; /* Left align text */
+    border-bottom: 1px solid #ddd; /* Bottom border for cells */
+}
+
+th {
+    background-color: #f4f4f4; /* Background color for header */
+}
+.rights{
+	text-align: center;
+	margin-left: 0px;
+}
